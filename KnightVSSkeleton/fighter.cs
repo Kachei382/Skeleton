@@ -9,7 +9,7 @@ using System.Windows.Forms;
 class fighter
 {
     private int health;
-    PictureBox sprite;
+    protected PictureBox sprite;
 
 
 
@@ -29,7 +29,7 @@ class fighter
 
 
 
-    private async void Die()
+    protected virtual  async void Die()
     {
         sprite.Image = Image.FromFile(@"C:\Users\User\Desktop\Nikita C#\KnightVSSkeleton-master\Assets\Skeleton_Death.gif");
         await Task.Delay(900);

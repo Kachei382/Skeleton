@@ -12,13 +12,13 @@ namespace KnightVSSkeleton
 {
     public partial class MainForm : Form
     {
-        fighter knight;
+        Knight knight;
         fighter skeleton;
 
         public MainForm()
         {
             InitializeComponent();
-            knight = new fighter(knightPictureBox);
+            knight = new Knight(knightPictureBox);
             skeleton = new fighter(skeletonPictureBox);
         }
 
@@ -43,13 +43,17 @@ namespace KnightVSSkeleton
                 if(skeleton.isDead()) MessageBox.Show("Winner Knight", "game over!");
                 else MessageBox.Show("Winner Skeleton", "game over!");
                 skeleton = new fighter(skeletonPictureBox);
-                knight = new fighter(knightPictureBox);
+                knight = new Knight(knightPictureBox);
                 knightsHealth.Text = knight.TellHealth().ToString();
                 skeletonsHealth.Text = skeleton.TellHealth().ToString();
                 skeletonAttacks.Enabled = true;
                 button1.Enabled = true;
                 skeletonPictureBox.Image = Image.FromFile(@"C:\Users\User\Desktop\Nikita C#\KnightVSSkeleton-master\Assets\Skeleton_Idle.gif");
                 skeletonPictureBox.Enabled = true;
+                knightPictureBox.Image = Image.FromFile(@"C:\Users\User\Desktop\Nikita C#\KnightVSSkeleton-master\Assets\Knight_Idle.gif");
+                knightPictureBox.Enabled = true;
+
+
             }
         }
 
@@ -63,7 +67,7 @@ namespace KnightVSSkeleton
         {
             skeleton.ReceiveDamage(knight.makeDamage());
             Update_All();
-
+            
         }
 
 
