@@ -14,12 +14,15 @@ namespace KnightVSSkeleton
     {
         Knight knight;
         fighter skeleton;
+        Weapon longSword = new Weapon() { MinDamage = 0, MaxDamage = 25 };
+        Weapon shortSword = new Weapon() { MinDamage = 10, MaxDamage = 15 };        
 
+    
         public MainForm()
         {
             InitializeComponent();
-            knight = new Knight(knightPictureBox);
-            skeleton = new fighter(skeletonPictureBox);
+            knight = new Knight(knightPictureBox,shortSword);
+            skeleton = new Skeleton(skeletonPictureBox,longSword);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -42,8 +45,8 @@ namespace KnightVSSkeleton
                 await Task.Delay(900);
                 if(skeleton.isDead()) MessageBox.Show("Winner Knight", "game over!");
                 else MessageBox.Show("Winner Skeleton", "game over!");
-                skeleton = new fighter(skeletonPictureBox);
-                knight = new Knight(knightPictureBox);
+                skeleton = new Skeleton(skeletonPictureBox,shortSword);
+                knight = new Knight(knightPictureBox,longSword);
                 knightsHealth.Text = knight.TellHealth().ToString();
                 skeletonsHealth.Text = skeleton.TellHealth().ToString();
                 skeletonAttacks.Enabled = true;
